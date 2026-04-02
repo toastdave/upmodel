@@ -35,6 +35,19 @@ Create the technical and design baseline for a fast-moving SvelteKit monolith th
 - Schema, seeds, and local services run without manual patching
 - The repo clearly mirrors sibling conventions while preserving a unique Upmodel product direction
 
+## Initial implementation status
+
+- Bun workspace, SvelteKit shell, Drizzle package, Docker Compose, and mise workflow are in place
+- Upmodel now owns the collision-free `2101` through `2107` local port block
+- The scaffold includes a working `/model` route, guest session plumbing, and media proxy support for guest-owned assets
+- Local development has been verified against Postgres and MinIO with the current guest flow
+
+## Remaining follow-up
+
+- Wire Better Auth into the current guest-first shell
+- Add deployment-ready environment validation and CI entrypoints
+- Decide when to split any future worker logic into a separate package
+
 ## Non-goals
 
 - Production infrastructure provisioning

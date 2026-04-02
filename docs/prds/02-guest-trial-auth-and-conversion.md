@@ -43,6 +43,19 @@ Make Upmodel very easy to try while pushing users into account creation and paid
 - Successful conversion preserves the guest project and unlocks continued generation
 - Failed checkout or auth does not lose the in-progress guest work
 
+## Initial implementation status
+
+- Guest session cookies now back persisted `guest_session` records in the database
+- Guests can create a project, upload a room photo, and generate one complimentary preview without signing in
+- The complimentary allowance is enforced server-side through the guest session record
+- A second concept attempt now redirects into the sign-in-plus-checkout placeholder flow with the originating project slug preserved
+
+## Remaining follow-up
+
+- Replace the current sign-in placeholder with a combined auth and purchase funnel
+- Migrate guest projects, uploads, briefs, and generation history into the created account after successful checkout
+- Add clearer product copy around exactly which post-trial actions trigger conversion
+
 ## Non-goals
 
 - Anonymous unlimited browsing of prior projects

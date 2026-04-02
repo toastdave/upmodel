@@ -19,17 +19,29 @@
 - Land the initial schema and seed data
 - Keep the landing page and `/model` route visually aligned with the product thesis
 
+Status: complete
+
 ### Milestone 2
 
 - Build guest projects and source photo upload
 - Add remodel brief analysis and review surfaces
 - Persist project summaries for later history views
 
+Status: in progress
+
+- Guest projects, source photo upload, object storage, and draft room briefs are now working end to end
+- Brief review and richer analysis remain next
+
 ### Milestone 3
 
 - Execute the first complimentary generation
 - Show job status and output variants in the workspace
 - Route the second action into conversion
+
+Status: partially complete
+
+- The complimentary generation path, persisted result variant, and second-action conversion redirect are now working
+- Provider-backed generation and richer job-state UX remain next
 
 ### Milestone 4
 

@@ -36,6 +36,19 @@ Create a reliable generation pipeline that turns a reviewed remodel brief into i
 - Complimentary and paid generations are distinguishable in the data model
 - Local development works with Ollama-friendly settings even when hosted keys are absent
 
+## Initial implementation status
+
+- The first guest preview now creates persisted `generation_job` and `generated_variant` records instead of only rendering static placeholder UI
+- Complimentary usage is tracked directly on the job and guest session records
+- Generated preview assets are stored and streamed back through the same storage path that future provider outputs will use
+- The current generation implementation is deterministic and local so the guest trial flow works consistently without external model dependencies
+
+## Remaining follow-up
+
+- Replace the deterministic preview renderer with provider-backed image generation
+- Add queued and processing job states plus an internal authenticated processing endpoint
+- Expand request and response metadata capture for provider debugging, retries, and refunds
+
 ## Non-goals
 
 - Large-scale async worker infrastructure in the first pass

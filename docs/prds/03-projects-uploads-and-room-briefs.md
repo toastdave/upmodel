@@ -35,6 +35,19 @@ Turn one uploaded room image into a persistent project record with a structured 
 - The remodel brief is stored as structured data, not only free-form prose
 - The project shape is stable enough to support multiple generations over time
 
+## Initial implementation status
+
+- Guests can now create projects directly from `/model` with a title, room type, intent, style direction, and uploaded source photo
+- Source photos are stored in MinIO-backed object storage and served back through the `/media/[...key]` route
+- Project creation automatically builds a draft structured room brief and summary from the submitted form data
+- Project detail pages now show the uploaded source photo, room brief summary, and the first preview state together
+
+## Remaining follow-up
+
+- Add image metadata extraction, validation feedback beyond file type and size, and richer room brief provenance
+- Build a review and edit step for the structured brief before paid regenerations
+- Support signed-in ownership and guest-to-user migration on the same project records
+
 ## Non-goals
 
 - Multi-property portfolios in the first pass
