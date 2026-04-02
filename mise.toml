@@ -1,0 +1,99 @@
+min_version = "2025.1.0"
+
+[tools]
+bun = "1.3.10"
+
+[tasks.install]
+run = "bun install"
+description = "Install workspace dependencies"
+
+[tasks.dev]
+depends = ["install"]
+run = "bun run dev"
+description = "Start the SvelteKit app locally"
+
+[tasks."dev:docker"]
+run = "docker compose up -d --build"
+description = "Start the fully containerized app detached"
+
+[tasks."docker:up"]
+run = "docker compose up -d postgres minio createbuckets mailpit ollama"
+description = "Start local infrastructure containers"
+
+[tasks."docker:down"]
+run = "docker compose down"
+description = "Stop Docker services"
+
+[tasks."tailscale:up"]
+run = "sudo tailscale serve --bg --https=2101 http://127.0.0.1:2101"
+description = "Expose the web app over Tailscale on port 2101"
+
+[tasks."tailscale:status"]
+run = "tailscale serve status"
+description = "Show Tailscale Serve status"
+
+[tasks."tailscale:down"]
+run = "sudo tailscale serve --https=2101 off"
+description = "Stop Tailscale Serve on port 2101"
+
+[tasks."ai:pull:analysis"]
+run = "docker compose exec ollama ollama pull gemma3"
+description = "Pull the local analysis model"
+
+[tasks."ai:pull:image"]
+run = "docker compose exec ollama ollama pull x/flux2-klein:4b"
+description = "Pull the local image generation model"
+
+[tasks."ai:logs"]
+run = "docker compose logs -f ollama"
+description = "Follow local Ollama logs"
+
+[tasks.check]
+depends = ["install"]
+run = "bun run check"
+description = "Run type checks across the workspace"
+
+[tasks.lint]
+depends = ["install"]
+run = "bun run lint"
+description = "Run Biome linting"
+
+[tasks.format]
+depends = ["install"]
+run = "bun run format"
+description = "Format the repository with Biome"
+
+[tasks.test]
+depends = ["install"]
+run = "bun run test"
+description = "Run Bun tests across the workspace"
+
+[tasks.build]
+depends = ["install"]
+run = "bun run build"
+description = "Build the SvelteKit app"
+
+[tasks."db:generate"]
+depends = ["install"]
+run = "bun run db:generate"
+description = "Generate Drizzle SQL migrations"
+
+[tasks."db:migrate"]
+depends = ["install"]
+run = "bun run db:migrate"
+description = "Apply Drizzle migrations"
+
+[tasks."db:push"]
+depends = ["install"]
+run = "bun run db:push"
+description = "Push the schema directly to Postgres"
+
+[tasks."db:studio"]
+depends = ["install"]
+run = "bun run db:studio"
+description = "Open Drizzle Studio"
+
+[tasks.seed]
+depends = ["install"]
+run = "bun run seed"
+description = "Seed development data"
